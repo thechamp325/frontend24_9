@@ -34,14 +34,14 @@ export class FormComponent{
   des37:FormGroup;
   des38:FormGroup;
   des4: FormGroup;
-  form:FormGroup;
+  form: FormGroup;
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
 
 
   salutation: string[];
-  sal:string[];
+  sal: string[];
   model: EmpData;
   loading: boolean;
 
@@ -85,7 +85,7 @@ export class FormComponent{
 
     this.model = new EmpData('Emp_ID', 'Mr.', 'F_Name', 'M_Name', 'L_Name', 'Father_Name', 'Mother_Name', 'M', 'CAddress' , 'Permanent_Address',
  'Y', 2, 'Religion', 'Caste', 'DOB', 'Pan', 810903810, 9849849544, 'Official_Email', 'Personal_Email' );
-                  this.salutation = ['Mr.', 'Ms.','Dr.'];
+                  this.salutation = ['Mr.', 'Ms.', 'Dr.'];
                   this.EmpForm = this.formBuilder.group({
                     salutation:   [this.model.salutation, Validators.required],
                     fname:        ['', Validators.required],
@@ -210,7 +210,7 @@ export class FormComponent{
                        Employee_ID:  ['', Validators.required],
                       });
 
-                      
+
                      this.des37 = this.formBuilder.group({
                       // empid:     [this.currentUser.firstName, Validators.required],
                       noa:     ['', Validators.required],
@@ -228,8 +228,8 @@ export class FormComponent{
                          date:     ['', Validators.required],
                          Employee_ID:  ['', Validators.required],
                         });
- 
-                        this.sal = ['Teacher', 'Ass. Teacher','HOD','Pri','staff'];
+
+                        this.sal = ['Teacher', 'Ass. Teacher', 'HOD', 'Pri', 'staff'];
                   this.des4 = this.formBuilder.group({
                  //   empid:     [this.currentUser.firstName, Validators.required],
                  Employee_ID:  ['', Validators.required],
@@ -241,7 +241,7 @@ export class FormComponent{
                     salutation:   [this.sal, Validators.required],
                     date_join:     ['', Validators.required],
                     date_conf:     ['', Validators.required],
-                    uni_apprperiodpg:     ['', Validators.required],//
+                    uni_apprperiodpg:     ['', Validators.required], //
                     uni_apprnumber:     ['', Validators.required],
                     dateaspg:     ['', Validators.required],
                     uni_apprperiodphd:     ['', Validators.required],
@@ -259,10 +259,10 @@ export class FormComponent{
                     sub_staff_type:    ['', Validators.required],
                     increment_month:    ['', Validators.required],
                     vacation:    ['', Validators.required],
-                    remarks:    ['', Validators.required],//
+                    remarks:    ['', Validators.required], //
                     univapprno:    ['', Validators.required],
                     univapprnodate:    ['', Validators.required],
-                    app_expiry_temp:    ['',Validators.required],//
+                    app_expiry_temp:    ['', Validators.required], //
                     // remark : ['',Validators.required]//
                   });
   }
@@ -270,75 +270,94 @@ export class FormComponent{
 
   onSubmit(){
     console.log(this.EmpForm.value);
-    this.http.post('http://10.10.13.66:8000/api/pi/emp', this.EmpForm.value, ).subscribe(result => {alert(result)})
-   
+    this.http.post('http://10.10.10.99:8000/api/pi/emp', this.EmpForm.value, ).subscribe(result => {alert(result); });
   }
 
-  
-  
-  
-  
   Submit(){
     console.log(this.des2.value);
-      this.http.post('http://10.10.13.66:8000/api/pi/emp/enter/admin/login/details/education', this.des2.value, ).subscribe(result => {alert(JSON.stringify(result))})
-      
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/education', this.des2.value, )
+               .subscribe(result => {
+                  alert(JSON.stringify(result));
+                });
     }
 
     Submit31(){
       console.log(this.des31.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/national_journal', this.des31.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/national_journal', this.des31.value, )
+              .subscribe(result => {
+                  alert(JSON.stringify(result));
+              });
     }
 
     Submit32(){
       console.log(this.des32.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/international_journal', this.des32.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/international_journal', this.des32.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
     Submit33(){
       console.log(this.des33.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/national_conf', this.des33.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/national_conf', this.des33.value, )
+              .subscribe(result => {
+                  alert(JSON.stringify(result));
+              });
     }
-    
+
     Submit34(){
       console.log(this.des34.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/international_conf', this.des34.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/international_conf', this.des34.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
 
     Submit35(){
       console.log(this.des35.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des35.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des35.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
 
-    
+
     Submit36(){
       console.log(this.des36.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des36.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/patentsgranted', this.des36.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
-
 
     Submit37(){
       console.log(this.des37.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des37.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/awardsrecieved', this.des37.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
 
     Submit38(){
       console.log(this.des38.value);
-      this.http.post('http://10.10.14.84:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des38.value, ).subscribe(result => {alert(JSON.stringify(result))})
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/grantsrecieved', this.des38.value, )
+              .subscribe(result => {
+                alert(JSON.stringify(result));
+              });
     }
 
-    
   Submit4(){
     console.log(this.des4.value);
-    this.http.post('http://10.10.13.66:8000/api/pi/emp/enter/admin/login/details', this.des4.value, ).subscribe(result => {alert(result)})
+    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details', this.des4.value, )
+            .subscribe(result => {alert(result);
+            });
   }
-
 
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
 }
 
-
-step=0;
+step = 0;
 
 setStep(index: number) {
   this.step = index;

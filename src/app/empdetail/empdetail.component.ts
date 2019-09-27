@@ -15,7 +15,7 @@ import { Designation, payband } from '@app/app.component';
   styleUrls: ['./empdetail.component.scss']
 })
 export class EmpdetailComponent implements OnInit {
-  
+
   isLinear = false;
   EmpForm: FormGroup;
   des2: FormGroup;
@@ -27,10 +27,13 @@ export class EmpdetailComponent implements OnInit {
   model: EmpData;
   child: boolean;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router,  private authenticationService: AuthenticationService) { }
-    salutationControl = new FormControl('', [Validators.required]);
+  constructor( private formBuilder: FormBuilder, 
+                private http: HttpClient, private router: Router,
+                private authenticationService: AuthenticationService) { }
 
-    
+  salutationControl = new FormControl('', [Validators.required]);
+
+
   desgControl = new FormControl('', [Validators.required]);
   desgs: Designation[] = [
     {value: 'X'},
@@ -48,21 +51,25 @@ export class EmpdetailComponent implements OnInit {
     {value: '400-500'},
   ];
 
-  
+
 
 
   ngOnInit(){
-    this.model = new EmpData('Emp_ID', 'Mr.', 'F_Name', 'M_Name', 'L_Name', 'Father_Name', 'Mother_Name', 'M', 'CAddress' , 'Permanent_Address',
- 'Y', 2, 'Religion', 'Caste', 'DOB', 'Pan', 810903810, 9849849544, 'Official_Email', 'Personal_Email' );
-                  this.salutation = ['Mr.', 'Ms.','Dr.'];
+    this.model = new EmpData('Emp_ID', 'Mr.', 'F_Name', 'M_Name', 'L_Name',
+                              'Father_Name', 'Mother_Name', 'M', 'CAddress' , 'Permanent_Address',
+                              'Y', 2, 'Religion', 'Caste', 'DOB', 'Pan', 810903810, 9849849544, 
+                              'Official_Email', 'Personal_Email' );
+
+
+                  this.salutation = ['Mr.', 'Ms.', 'Dr.'];
                   this.EmpForm = this.formBuilder.group({
                     empid:     ['', Validators.required],
                     salutation:   [this.model.salutation, Validators.required],
                     fname:        ['', Validators.required],
                     mname:        ['', Validators.required],
                     lname:        ['', Validators.required],
-                    //fathersName:  ['', Validators.required],
-                    //mothersName:  ['', Validators.required],
+                    // fathersName:  ['', Validators.required],
+                    // mothersName:  ['', Validators.required],
                     gender:       ['', Validators.required],
                     caddress:     ['', Validators.required],
                     paddress:     ['', Validators.required],
@@ -79,7 +86,7 @@ export class EmpdetailComponent implements OnInit {
                     oemail:       ['', Validators.required],
                     pemail:       ['', Validators.required],
                   });
-                  
+
                   this.des2 = this.formBuilder.group({
                     diploma:     ['', Validators.required],
                     class_diploma:     ['', Validators.required],
@@ -152,29 +159,35 @@ export class EmpdetailComponent implements OnInit {
   }
 
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.EmpForm.value);
-    this.http.post('http://10.10.13.66:8000/api/pi/emp/enter', this.EmpForm.value, ).subscribe(result => {alert(JSON.stringify(result)); });
+    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.EmpForm.value, ).subscribe(result => {alert(JSON.stringify(result)); });
   }
 
-  
-  
-  
-  
-  Submit(){
+
+  Submit() {
       console.log(this.des2.value);
-      this.http.post('http://10.10.13.66:8000/api/pi/emp/enter', this.des2.value, ).subscribe(result => {alert(result); });
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des2.value, )
+               .subscribe(result => {
+                  alert(result);
+                });
     }
 
-    Submit3(){
+    Submit3() {
       console.log(this.des3.value);
-      this.http.post('http://10.10.13.66:8000/api/pi/emp/enter', this.des3.value, ).subscribe(result => {alert(result); });
+      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des3.value, )
+               .subscribe(result => {
+                  alert(result);
+                });
     }
 
-    
+
   Submit4(){
     console.log(this.des4.value);
-    this.http.post('http://10.10.13.66:8000/api/pi/emp/enter', this.des4.value, ).subscribe(result => {alert(result); });
+    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des4.value, )
+             .subscribe(result => {
+                alert(result);
+             });
   }
 
 
@@ -185,21 +198,20 @@ export class EmpdetailComponent implements OnInit {
 
 Single(){
   document.getElementById('new').nodeValue = '0';
-  var data = document.getElementById('new');
+  const data = document.getElementById('new');
   data.setAttribute('disabled', 'disabled');
 }
 
 getEmp() {
-  this.http.get('http://10.10.11.145:8000/api/pi/emp/autoempid').subscribe((result) => {
-    var out = result as any;
-  
-    
+  this.http.get('http://10.10.10.99:8000/api/pi/emp/autoempid').subscribe((result) => {
+    const out = result as any;
     this.EmpForm.get('empid').setValue(out.empid);
+    alert(JSON.stringify(result));
   });
 }
 
-Married(){
-  var data = document.getElementById('new');
+Married() {
+  const data = document.getElementById('new');
   data.removeAttribute('disabled');
 }
 
