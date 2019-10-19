@@ -270,12 +270,12 @@ export class FormComponent{
 
   onSubmit(){
     console.log(this.EmpForm.value);
-    this.http.post('http://10.10.10.99:8000/api/pi/emp', this.EmpForm.value, ).subscribe(result => {alert(result); });
+    this.http.post('http://10.10.13.205:8000/api/pi/emp', this.EmpForm.value, ).subscribe(result => {alert(result); });
   }
 
   Submit(){
     console.log(this.des2.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/education', this.des2.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/education', this.des2.value, )
                .subscribe(result => {
                   alert(JSON.stringify(result));
                 });
@@ -283,7 +283,7 @@ export class FormComponent{
 
     Submit31(){
       console.log(this.des31.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/national_journal', this.des31.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/national_journal', this.des31.value, )
               .subscribe(result => {
                   alert(JSON.stringify(result));
               });
@@ -291,14 +291,14 @@ export class FormComponent{
 
     Submit32(){
       console.log(this.des32.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/international_journal', this.des32.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/international_journal', this.des32.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
     }
     Submit33(){
       console.log(this.des33.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/national_conf', this.des33.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/national_conf', this.des33.value, )
               .subscribe(result => {
                   alert(JSON.stringify(result));
               });
@@ -306,7 +306,7 @@ export class FormComponent{
 
     Submit34(){
       console.log(this.des34.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/international_conf', this.des34.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/international_conf', this.des34.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
@@ -314,7 +314,7 @@ export class FormComponent{
 
     Submit35(){
       console.log(this.des35.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des35.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/book', this.des35.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
@@ -323,7 +323,7 @@ export class FormComponent{
 
     Submit36(){
       console.log(this.des36.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/patentsgranted', this.des36.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/patentsgranted', this.des36.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
@@ -331,7 +331,7 @@ export class FormComponent{
 
     Submit37(){
       console.log(this.des37.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/awardsrecieved', this.des37.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/awardsrecieved', this.des37.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
@@ -339,7 +339,7 @@ export class FormComponent{
 
     Submit38(){
       console.log(this.des38.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details/publications/grantsrecieved', this.des38.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details/publications/grantsrecieved', this.des38.value, )
               .subscribe(result => {
                 alert(JSON.stringify(result));
               });
@@ -347,7 +347,7 @@ export class FormComponent{
 
   Submit4(){
     console.log(this.des4.value);
-    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter/admin/login/details', this.des4.value, )
+    this.http.post('http://10.10.13.205:8000/api/pi/emp/enter/admin/login/details', this.des4.value, )
             .subscribe(result => {alert(result);
             });
   }

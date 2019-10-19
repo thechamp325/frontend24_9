@@ -20,3 +20,7 @@ table {
  .example{
      width: 50px;
  }
+
+ #filter{
+     color: black;
+ }

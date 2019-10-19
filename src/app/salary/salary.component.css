@@ -9,8 +9,11 @@ h3{
 table {
     width: 100%;
   }
-  .mat-card{
+  .matcard{
       padding: 4% 10% 10% 10%;
+      background-color: white;
+      border-radius: 4px;
+      /* box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3); */
   }
 
  .example-full-width{
@@ -21,3 +24,16 @@ table {
      width: 50px;
  }
 
+ table, th, td { 
+    border: 1px solid black; 
+    border-collapse: collapse; 
+    padding: 6px; 
+} 
+body{
+    background: none;
+    color: black;
+}
+
+body {
+    text-align:center;
+}

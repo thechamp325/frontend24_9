@@ -52,6 +52,13 @@
           <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
         </ng-container>
 
+             <!-- Certificate Id -->
+             <ng-container matColumnDef="salaryid">
+              <th mat-header-cell *matHeaderCellDef> Certificate Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.salaryid}} </td>
+            </ng-container>
+
+            
          <!-- Request Column -->
         
          <ng-container matColumnDef="request">

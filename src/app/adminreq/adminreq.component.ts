@@ -28,7 +28,7 @@ export interface PeriodicElement {
 export class AdminreqComponent implements OnInit {
 
  
-  displayedColumns: string[] = ['EMPID', 'name', 'lastname', 'designation','Type','request'];
+  displayedColumns: string[] = ['EMPID', 'name', 'lastname', 'designation','Type','salaryid','request'];
   private dataSource;
   public employees = [];
   formBuilder: any;
@@ -45,7 +45,7 @@ export class AdminreqComponent implements OnInit {
     ) { }
   
   
-  private _url: string = '/assets/data/adminreq.json';
+  private _url: string = 'http://10.10.13.205:8080/api/pi/emp/livehod';
   
   ngOnInit() {
 
@@ -61,7 +61,7 @@ export class AdminreqComponent implements OnInit {
    
   yes(prop){
      console.log(prop);
-     this.http.post('http://10.10.14.236:8080/api/pi/emp', prop ).subscribe(result => {alert(result)})
+     this.http.post('http://10.10.13.205:8080/api/pi/emp', prop ).subscribe(result => {alert(result)})
      
   }
 

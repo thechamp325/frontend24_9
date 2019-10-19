@@ -29,7 +29,7 @@ export interface PeriodicElement {
 
 export class LiverequestComponent {
   
-  displayedColumns: string[] = ['EMPID', 'name', 'designation','Type','cert_id','duration','request'];
+  displayedColumns: string[] = ['EMPID', 'name', 'designation','Type','salaryid','duration','request'];
   private dataSource;
   public employees = [];
   formBuilder: any;
@@ -46,7 +46,7 @@ export class LiverequestComponent {
   ) { }
   
   
-  private _url: string = './../assets/data/request.json';
+  private _url: string = 'http://10.10.11.131:8000/api/pi/emp/salary/';
   
   ngOnInit() {
 

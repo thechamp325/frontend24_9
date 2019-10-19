@@ -46,14 +46,14 @@
       <div class="jumbotron">
         <mat-form-field>
     
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="EMPID">
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
           </mat-form-field>
-
+<!-- 
           <mat-form-field>
     
                 <input matInput (keyup)="applyFilt($event.target.value)" placeholder="Designation">
               </mat-form-field>
-          
+           -->
           
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           

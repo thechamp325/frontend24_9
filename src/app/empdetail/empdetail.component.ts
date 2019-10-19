@@ -161,13 +161,13 @@ export class EmpdetailComponent implements OnInit {
 
   onSubmit() {
     console.log(this.EmpForm.value);
-    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.EmpForm.value, ).subscribe(result => {alert(JSON.stringify(result)); });
+    this.http.post('http://10.10.13.205:8000/api/pi/emp/enter', this.EmpForm.value, ).subscribe(result => {alert(JSON.stringify(result)); });
   }
 
 
   Submit() {
       console.log(this.des2.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des2.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter', this.des2.value, )
                .subscribe(result => {
                   alert(result);
                 });
@@ -175,7 +175,7 @@ export class EmpdetailComponent implements OnInit {
 
     Submit3() {
       console.log(this.des3.value);
-      this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des3.value, )
+      this.http.post('http://10.10.13.205:8000/api/pi/emp/enter', this.des3.value, )
                .subscribe(result => {
                   alert(result);
                 });
@@ -184,7 +184,7 @@ export class EmpdetailComponent implements OnInit {
 
   Submit4(){
     console.log(this.des4.value);
-    this.http.post('http://10.10.10.99:8000/api/pi/emp/enter', this.des4.value, )
+    this.http.post('http://10.10.13.205:8000/api/pi/emp/enter', this.des4.value, )
              .subscribe(result => {
                 alert(result);
              });
@@ -203,7 +203,7 @@ Single(){
 }
 
 getEmp() {
-  this.http.get('http://10.10.10.99:8000/api/pi/emp/autoempid').subscribe((result) => {
+  this.http.get('http://10.10.13.205:8000/api/pi/emp/autoempid').subscribe((result) => {
     const out = result as any;
     this.EmpForm.get('empid').setValue(out.empid);
     alert(JSON.stringify(result));

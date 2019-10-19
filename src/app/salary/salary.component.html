@@ -11,31 +11,28 @@
     <mat-sidenav-content>
        
         
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-dark" data-html2canvas-ignore="true">
     <div class="navbar-nav">
-        <button color="accent" mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+         <button color="accent" mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
         <a class="nav-item nav-link" routerLink="/staff-home">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
   </nav>
-  <div class="jumbotron"  id="pdf">
-<mat-card *ngFor="let employee of employees">
+  <div class="jumbotron"  >
+<div class="matcard"  *ngFor="let employee of employees">
     <h3 >Date:{{employee.report}}</h3>
     <br>
     <br>
-<section>
+<section id="pdf">
     <h1>SALARY CERTIFICATE</h1>
-    </section>
     <br>
     <br>
-    <section >
         <h5 *ngFor="let employee of employees">
         This is to certify that {{employee.name}} is working in this institute as
                 
         in {{employee.dept}} &nbsp; . His/Her salary for the month&nbsp;&nbsp;{{employee.fromdate}}&nbsp;&nbsp; To &nbsp;&nbsp;{{employee.todate}} &nbsp;&nbsp;is as below:-
         </h5>
-    </section>
-    <section>
+
          
                 <head> 
                     
@@ -49,6 +46,9 @@
                             background: none;
                             color: black;
                         }
+
+
+                        
                     </style> 
                 </head> 
                 
@@ -231,9 +231,9 @@
 
 
 
-</mat-card>
+</div>
 
-<input type="button" value="Download pdf" (click)="convert()"/>
+<input type="button" value="Download pdf" (click)="convert()" data-html2canvas-ignore="true"/>
 
 <!--
 <div align="right">

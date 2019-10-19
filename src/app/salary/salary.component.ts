@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {throwError as observableThrowError } from 'rxjs';
 import { IEmployee } from '@app/employee';
 import html2canvas from 'html2canvas';
-import * as jspdf from 'jspdf/dist/jspdf.node.debug.js';
+import * as jsPDF from 'jspdf/dist/jspdf.node.debug.js';
 
 
 export interface xyz {
@@ -25,7 +25,7 @@ export class SalaryComponent {
   constructor(private http:HttpClient) { }
 
   
-  private _url: string = '/assets/data/employees.json';
+  private _url: string = 'http://10.10.10.134:8080/api/pi/emp/sarlary_check';
 
   ngOnInit() {
   
@@ -59,21 +59,34 @@ export class SalaryComponent {
   public convert() 
 {
     var data = document.getElementById('pdf');
-    html2canvas(data).then(canvas => 
+    html2canvas(document.body).then(canvas => 
         {
         // Few necessary setting options
-        var imgWidth = 208;
+        var imgWidth = 250;
         var pageHeight = 295;
         var imgHeight = canvas.height * imgWidth / canvas.width;
         var heightLeft = imgHeight;
 
         const contentDataURL = canvas.toDataURL('image/png')
-        let pdf = new jspdf('p', 'pt', 'a4'); // A4 size page of PDF
-        var position = 0;
-        pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
+        let pdf = new jsPDF('l', 'mm', 'a4'); // A4 size page of PDF
+        var position = -17;
+        pdf.addImage(contentDataURL, 'PNG', 0, -15, pageHeight, heightLeft);
         pdf.save('MYPdf.pdf'); // Generated PDF 
 
     });
+
+
 }
+
+// public convert(){
+//   var doc = new jsPDF();
+//   var imgData = 'data:image/jpeg;base64,'+ Base64.encode('Koala.jpeg');
+//   console.log(imgData);
+//   doc.setFontSize(40);
+//   doc.text(30, 20, 'Hello world!');
+//   doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
+//   doc.output('datauri');
+// }
+
 
 }
