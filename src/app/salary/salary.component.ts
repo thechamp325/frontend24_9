@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, /*Input*/ } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {throwError as observableThrowError } from 'rxjs';
 import { IEmployee } from '@app/employee';
 import html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf/dist/jspdf.node.debug.js';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 
 export interface xyz {
@@ -15,17 +16,22 @@ export interface xyz {
   selector: 'app-salary', 
   templateUrl: './salary.component.html',
   
-  styleUrls: ['./salary.component.css']
+  styleUrls: ['./salary.component.css'],
+  // template:
+  // <div class ="notification is-primary">
+  //   <h3>Salary</h3>
+  //   Say {{message}}
+  // </div>
 })
 export class SalaryComponent {
 
    
   public employees = [];
   public errorMsg;
+  // @Input() message:string;
   constructor(private http:HttpClient) { }
-
   
-  private _url: string = 'http://10.10.10.134:8080/api/pi/emp/sarlary_check';
+  private _url: string = 'http://10.10.11.58:8000/api/pi/emp/salary_check/?Employee_ID=Emp01&salaryid=Emp012019-07-25';
 
   ngOnInit() {
   

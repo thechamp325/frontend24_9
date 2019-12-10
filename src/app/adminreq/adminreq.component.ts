@@ -23,12 +23,15 @@ export interface PeriodicElement {
 @Component({
   selector: 'app-adminreq',
   templateUrl: './adminreq.component.html',
-  styleUrls: ['./adminreq.component.css']
+  styleUrls: ['./adminreq.component.css'],
+  // template:
+  // <h1>parent < /h1>
+  // < app - salary [message]= "message" > </app-salary>
 })
 export class AdminreqComponent implements OnInit {
 
  
-  displayedColumns: string[] = ['EMPID', 'name', 'lastname', 'designation','Type','salaryid','request'];
+  displayedColumns: string[] = ['EMPID', 'name', 'lastname', 'designation', 'Type', 'salaryid', 'request'];
   private dataSource;
   public employees = [];
   formBuilder: any;
@@ -43,14 +46,15 @@ export class AdminreqComponent implements OnInit {
     private userService: UserService
     
     ) { }
+    // message = "hello world"// send this from adminreq to salary component
   
   
-  private _url: string = 'http://10.10.13.205:8080/api/pi/emp/livehod';
+  private _url: string = 'http://10.10.11.58:8000/api/pi/emp/livehod';
   
   ngOnInit() {
 
     this.http.get<PeriodicElement[]>(this._url)
-    .subscribe(data =>{this.employees = data;
+    .subscribe(data => {this.employees = data;
         this.dataSource = new MatTableDataSource(this.employees);
       });
   }
@@ -59,11 +63,11 @@ export class AdminreqComponent implements OnInit {
     return observableThrowError(error.message || "Server Error");
   }
    
-  yes(prop){
-     console.log(prop);
-     this.http.post('http://10.10.13.205:8080/api/pi/emp', prop ).subscribe(result => {alert(result)})
+  // yes(prop){
+  //    console.log(prop);
+  //    this.http.post('http://10.10.11.137:8000/api/pi/emp', prop ).subscribe(result => {alert(result)})
      
-  }
+  // }
 
   
   logout() {

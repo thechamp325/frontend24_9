@@ -32,7 +32,7 @@ export class StatusComponent implements OnInit {
   ) { } 
 
   
-  private _url: string ='http://localhost:8000/api/pi/emp/salary_check?Employee_ID='+'Emp01';
+  private _url: string ='http://10.10.11.137:8000/api/pi/emp/salary_check?Employee_ID=Emp01';
   private dataSource;
   ngOnInit() {
   
@@ -45,7 +45,7 @@ export class StatusComponent implements OnInit {
 
   getstatus() {
     var empid = document.getElementById('emp').nodeValue;
-    this.http.get<IEmployee[]>('http://10.10.13.66:8000/api/pi/emp/salary_check?Employee_ID='+empid)
+    this.http.get<IEmployee[]>('http://10.10.11.137:8000/api/pi/emp/salary_check?Employee_ID=Emp01&salaryid=Emp012019-07-24')
     .subscribe(data => {this.employees = data;
       this.dataSource = new MatTableDataSource(this.employees);
     });

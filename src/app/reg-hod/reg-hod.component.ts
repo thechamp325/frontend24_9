@@ -49,7 +49,7 @@ constructor(
        
        
   private _url: string = '/assets/data/emplist.json';
-
+ 
 ngOnInit() {
    this.http.get<PeriodicElement[]>(this._url)
     .subscribe(data =>{this.employees = data;
