@@ -82,7 +82,8 @@ constructor(
        }
        
        
-  private _url: string = '/assets/data/emplist.json';
+  // private _url: string = '/assets/data/emplist.json';
+  private _url = 'http://10.10.14.1:8000/api/pi/emp/allemps'
 
 ngOnInit() {
    this.http.get<PeriodicElement[]>(this._url)

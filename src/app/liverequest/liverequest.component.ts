@@ -33,6 +33,7 @@ export class LiverequestComponent {
   private dataSource;
   public employees = [];
   formBuilder: any;
+  salarydata: {EMPID: string,Certificate_id: string,flag: boolean}[]= [];
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -46,7 +47,7 @@ export class LiverequestComponent {
   ) { }
   
   
-  private _url: string = 'http://10.10.11.131:8000/api/pi/emp/salary/';
+  private _url: string = 'http://10.10.14.1:8000/api/pi/emp/livehod';
   
   ngOnInit() {
 
@@ -60,13 +61,24 @@ export class LiverequestComponent {
     return observableThrowError(error.message || "Server Error");
   }
    
-  yes(prop,flag){
-     console.log({...prop,flag});
-     this.http.post('http://10.10.11.145:8000/api/pi/emp/salary/approvehod_salary', {...prop,flag} ).subscribe(result => {alert(JSON.stringify(result))});
+  yes(Certificate_id: string,EMPID: string){
+    this.salarydata=[];
+    this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":true});
+    console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
+     this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approvehod_salary',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
     
       this.ngOnInit();
     }
+    no(Certificate_id: string,EMPID: string){
+      this.salarydata=[];
 
+      this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":false});
+
+    console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
+    this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approvehod_salary', this.salarydata ).subscribe(result => {alert(JSON.stringify(result))});
+     
+       this.ngOnInit();
+     }
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);

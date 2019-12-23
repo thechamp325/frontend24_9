@@ -1,10 +1,11 @@
-import { Component, OnInit, /*Input*/ } from '@angular/core';
+import { Component, OnInit, Input, /*Input*/ } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {throwError as observableThrowError } from 'rxjs';
 import { IEmployee } from '@app/employee';
 import html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf/dist/jspdf.node.debug.js';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
+import { Salary_CertificateService } from '@app/salary_certificate.service';
 
 
 export interface xyz {
@@ -23,18 +24,23 @@ export interface xyz {
   //   Say {{message}}
   // </div>
 })
-export class SalaryComponent {
+export class SalaryComponent implements OnInit{
 
-   
+  @Input() salarydata: {salaryid: string, empid: string}[]=[];
   public employees = [];
   public errorMsg;
-  // @Input() message:string;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+    private salarycertservice: Salary_CertificateService) { }
   
-  private _url: string = 'http://10.10.11.58:8000/api/pi/emp/salary_check/?Employee_ID=Emp01&salaryid=Emp012019-07-25';
+  private _url: string = '';
 
   ngOnInit() {
-  
+    console.log(JSON.stringify(this.salarydata));
+    this.salarydata=this.salarycertservice.salary;
+    console.log(JSON.stringify(this.salarydata));
+
+    this._url='http://10.10.14.1:8000/api/pi/emp/salary_check?Employee_ID='+this.salarydata[0].empid+'&salaryid='+this.salarydata[0].salaryid;
+    console.log('In salarycomponent salary_id = '+this.salarydata[0].salaryid);
     this.http.get<IEmployee[]>(this._url)
     .subscribe(data => this.employees = data);
   }

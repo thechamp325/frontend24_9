@@ -22,6 +22,8 @@ export class PriRequestComponent {
   displayedColumns: string[] =['EMPID', 'name', 'designation','Type','cert_id','duration','request'];
   private dataSource;
   public employees = [];
+  salarydata: {EMPID: string,Certificate_id: string,flag: boolean}[]= [];
+
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -33,7 +35,7 @@ export class PriRequestComponent {
     private userService: UserService
 
   ) { }
-  private _url = 'http://10.10.11.145:8000/api/pi/emp/liveprincipal'
+  private _url = 'http://10.10.14.1:8000/api/pi/emp/liveprincipal'
 
   ngOnInit() {
      this.http.get<PeriodicElement[]>(this._url)
@@ -43,12 +45,25 @@ export class PriRequestComponent {
     }
 
    
-    yes(prop,flag){
-      console.log({...prop,flag});
-      this.http.post('http://10.10.11.145:8000/api/pi/emp/salary/approveprinci', {...prop,flag} ).subscribe(result => {alert(JSON.stringify(result))});
-      
+    yes(Certificate_id: string,EMPID: string){
+      this.salarydata=[];
 
-    }
+      this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":true});
+      console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
+       this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approveprinci',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
+      
+        this.ngOnInit();
+      }
+      no(Certificate_id: string,EMPID: string){
+        this.salarydata=[];
+
+        this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":false});
+  
+      console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
+      this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approveprinci', this.salarydata ).subscribe(result => {alert(JSON.stringify(result))});
+       
+         this.ngOnInit();
+       }
 
     logout() {
       this.authenticationService.logout();

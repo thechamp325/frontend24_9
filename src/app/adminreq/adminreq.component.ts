@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthenticationService, UserService } from '@app/_services';
+import { Salary_CertificateService } from '@app/salary_certificate.service';
 
 
 export interface PeriodicElement {
@@ -43,13 +44,14 @@ export class AdminreqComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private salarycertservice: Salary_CertificateService,
     
     ) { }
     // message = "hello world"// send this from adminreq to salary component
   
   
-  private _url: string = 'http://10.10.11.58:8000/api/pi/emp/livehod';
+  private _url: string = 'http://10.10.14.1:8000/api/pi/emp/salary_check/admin';
   
   ngOnInit() {
 
@@ -63,11 +65,12 @@ export class AdminreqComponent implements OnInit {
     return observableThrowError(error.message || "Server Error");
   }
    
-  // yes(prop){
-  //    console.log(prop);
-  //    this.http.post('http://10.10.11.137:8000/api/pi/emp', prop ).subscribe(result => {alert(result)})
+  yes(id: string,EmployeeID: string){
+     console.log('id='+id+' empid='+EmployeeID);
+    //  this.http.post('http://10.10.11.137:8000/api/pi/emp', prop ).subscribe(result => {alert(result)})
+    this.salarycertservice.setdata(id,EmployeeID);
      
-  // }
+  }
 
   
   logout() {
