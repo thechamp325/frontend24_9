@@ -35,7 +35,7 @@ export class PriRequestComponent {
     private userService: UserService
 
   ) { }
-  private _url = 'http://10.10.14.1:8000/api/pi/emp/liveprincipal'
+  private _url = 'http://10.10.15.99:8000/api/pi/emp/liveprincipal'
 
   ngOnInit() {
      this.http.get<PeriodicElement[]>(this._url)
@@ -50,7 +50,7 @@ export class PriRequestComponent {
 
       this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":true});
       console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
-       this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approveprinci',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
+       this.http.post('http://10.10.15.99:8000/api/pi/emp/salary/approveprinci',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
       
         this.ngOnInit();
       }
@@ -60,7 +60,7 @@ export class PriRequestComponent {
         this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":false});
   
       console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
-      this.http.post('http://10.10.14.1:8000/api/pi/emp/salary/approveprinci', this.salarydata ).subscribe(result => {alert(JSON.stringify(result))});
+      this.http.post('http://10.10.15.99:8000/api/pi/emp/salary/approveprinci', this.salarydata ).subscribe(result => {alert(JSON.stringify(result))});
        
          this.ngOnInit();
        }

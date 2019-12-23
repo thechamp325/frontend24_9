@@ -19,12 +19,36 @@
     </div>
   </nav>
   <div class="jumbotron">
-    <mat-form-field>
 
-      <input matInput placeholder="EMPID" id ="emp">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <label>Empid</label>
+  <input type="text"
+   id="emp"
+   ngModel
+   name="id">
+  <label>Salary ID</label>
+  <input type="text"
+  id="salary"
+  ngModel
+   name="salary_id">
+<button type="submit">Save</button>
+
+</form>
+<br>
+
+    <!-- <mat-form-field>
+
+      <input matInput placeholder="EMPID" id ="emp" [(ngModel)]="id">
+      
       
     </mat-form-field>
-    <button (click)="getstatus()" >Show Status</button>
+    <mat-form-field>
+
+      <input matInput placeholder="Salary ID" id ="salary_id" [(ngModel)]="salary_id">
+      
+      
+    </mat-form-field>
+    <button (click)=`getstatus()` >Show Status</button> -->
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       
         <!-- Position Column -->

@@ -6,7 +6,9 @@ import html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf/dist/jspdf.node.debug.js';
 import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Salary_CertificateService } from '@app/salary_certificate.service';
-
+import { HostListener } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/_services';
 
 export interface xyz {
   id : string ,
@@ -29,7 +31,10 @@ export class SalaryComponent implements OnInit{
   @Input() salarydata: {salaryid: string, empid: string}[]=[];
   public employees = [];
   public errorMsg;
-  constructor(private http:HttpClient,
+  constructor(
+    private authenticationService: AuthenticationService,
+    private http:HttpClient,
+    private router: Router,
     private salarycertservice: Salary_CertificateService) { }
   
   private _url: string = '';
@@ -39,7 +44,7 @@ export class SalaryComponent implements OnInit{
     this.salarydata=this.salarycertservice.salary;
     console.log(JSON.stringify(this.salarydata));
 
-    this._url='http://10.10.14.1:8000/api/pi/emp/salary_check?Employee_ID='+this.salarydata[0].empid+'&salaryid='+this.salarydata[0].salaryid;
+    this._url='http://10.10.15.99:8000/api/pi/emp/salary_check?Employee_ID='+this.salarydata[0].empid+'&salaryid='+this.salarydata[0].salaryid;
     console.log('In salarycomponent salary_id = '+this.salarydata[0].salaryid);
     this.http.get<IEmployee[]>(this._url)
     .subscribe(data => this.employees = data);
@@ -99,6 +104,14 @@ export class SalaryComponent implements OnInit{
 //   doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
 //   doc.output('datauri');
 // }
+// @HostListener('window:beforeunload') goToPage() {
+//   this.router.navigate(['/']);
+// }
+
+logout() {
+  this.authenticationService.logout();
+  this.router.navigate(['/login']);
+}
 
 
 }

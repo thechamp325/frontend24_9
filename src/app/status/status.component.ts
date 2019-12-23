@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {throwError as observableThrowError } from 'rxjs';
+import {throwError as observableThrowError, from } from 'rxjs';
 import { IEmployee } from '@app/employee';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AuthenticationService, UserService } from '@app/_services';
-
+import { Salary_CertificateService } from '@app/salary_certificate.service';
+import { NgForm } from '@angular/forms';
 
 export interface xyz {
   id : string ,
@@ -19,7 +20,9 @@ export interface xyz {
 })
 export class StatusComponent implements OnInit {
   displayedColumns: string[] = ['Type','HOD','Principal', 'Admin','request'];
-  
+  public id: string;
+  public EmployeeID: string;
+
   public employees = [];
   public errorMsg;
   constructor(
@@ -27,12 +30,13 @@ export class StatusComponent implements OnInit {
     private http: HttpClient,
            private router: Router,
            private authenticationService: AuthenticationService,
-           private userService: UserService
-           
+           private userService: UserService,
+           private salarycertservice: Salary_CertificateService,
+
   ) { } 
 
   
-  private _url: string ='http://10.10.11.137:8000/api/pi/emp/salary_check?Employee_ID=Emp01';
+  private _url: string ='http://10.10.10.91:8000/api/pi/emp/salary_check?Employee_ID=Emp01';
   private dataSource;
   ngOnInit() {
   
@@ -42,13 +46,21 @@ export class StatusComponent implements OnInit {
   //   });
    }
 
+   
+    
+   onSubmit(form: NgForm){  
+     console.log(form.value.id.toString());
+     this.EmployeeID= form.value.id.toString();
+   this.id=  form.value.salary;
 
-  getstatus() {
-    var empid = document.getElementById('emp').nodeValue;
-    this.http.get<IEmployee[]>('http://10.10.11.137:8000/api/pi/emp/salary_check?Employee_ID=Emp01&salaryid=Emp012019-07-24')
+    console.log('id = '+this.id);
+
+    this.http.get<IEmployee[]>('http://10.10.10.91:8000/api/pi/emp/salary_check?Employee_ID='+form.value.id+'&salaryid='+form.value.salary)
     .subscribe(data => {this.employees = data;
       this.dataSource = new MatTableDataSource(this.employees);
     });
+    this.salarycertservice.setdata(this.id,this.EmployeeID);
+
   }
   
   errorHandler(error: HttpErrorResponse){

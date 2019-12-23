@@ -53,7 +53,7 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
 
     this.form = this.formBuilder.group({
-      empid:     [this.currentUser.firstName, Validators.required],
+      empid:     [this.currentUser.username, Validators.required],
       from_month:     ['', Validators.required],
       to_month:     ['', Validators.required],
     });
@@ -61,7 +61,7 @@ export class ReportComponent implements OnInit {
 
   Submit(){
     console.log(this.form.value);
-    this.http.post('http://10.10.11.137:8080/api/pi/emp/salary_certificate', this.form.value, ).subscribe(result => {alert(result)})
+    this.http.post('http://10.10.15.99:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
    
   }
 

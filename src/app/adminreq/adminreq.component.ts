@@ -51,7 +51,7 @@ export class AdminreqComponent implements OnInit {
     // message = "hello world"// send this from adminreq to salary component
   
   
-  private _url: string = 'http://10.10.14.1:8000/api/pi/emp/salary_check/admin';
+  private _url: string = 'http://10.10.15.99:8000/api/pi/emp/salary_check/admin';
   
   ngOnInit() {
 
