@@ -13,14 +13,13 @@
         
 <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
-        <button color="accent" mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-        <a class="nav-item nav-link" routerLink="/staff-home">Home</a>
+        <a class="nav-item nav-link" routerLink="/home">Home</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
   </nav>
   <div class="jumbotron">
-<mat-card>
-    <h3>Date:4/4/2019</h3>
+<mat-card  *ngFor="let employee of employees">
+    <h3>Date:{{employee.report}}</h3>
     <br>
     <br>
 <section>
@@ -28,11 +27,13 @@
     </section>
     <br>
     <br>
-    <section >
-        <h5>
-        This is to certify that {{name}}<mat-form-field class="example-full-width">
+    <section id="pdf">
+        <h5 *ngFor="let employee of employees">
+        <!-- This is to certify that {{employee.name}}<mat-form-field class="example-full-width">
                 <input matInput value="Name of Employee" disabled>
               </mat-form-field> is working in this institute as detailed below :-
+             -->
+             This is to certify that {{employee.name}}is working in this institute as detailed below :-
         </h5>
     </section>
     <section>
@@ -63,7 +64,7 @@
                         <th>Department</th>
                         </tr> 
                     <tr> 
-                        <td rowspan="5"><input matInput value="Name" disabled></td> 
+                        <td rowspan="5">{{employee.name}}</td> 
                         <td>
                                 <input matInput value="Professor" disabled>
                         </td>
@@ -140,6 +141,10 @@
         <label><b>Principal</b></label>
     </div>
 </mat-card>
+
+<input type="button" value="Download pdf" (click)="convert()" data-html2canvas-ignore="true"/>
+
+
 <!--
 <div align="right">
     <button mat-raised-button>Download as PDF</button>

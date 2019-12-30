@@ -40,6 +40,7 @@ import { StatusComponent } from './status/status.component';
 import { RegHodComponent } from './reg-hod/reg-hod.component';
 import { RegPriComponent } from './reg-pri/reg-pri.component';
 import { Salary_CertificateService } from './salary_certificate.service';
+import { Experience_CertificateService } from './experience_certificate.service'
 @NgModule({
     imports: [
         BrowserModule,
@@ -88,7 +89,7 @@ import { Salary_CertificateService } from './salary_certificate.service';
     providers: [ 
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-        Salary_CertificateService,
+        Salary_CertificateService,Experience_CertificateService,
 
         // provider used to create fake backend
         fakeBackendProvider

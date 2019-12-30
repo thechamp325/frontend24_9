@@ -51,14 +51,15 @@ export class StatusComponent implements OnInit {
    onSubmit(form: NgForm){  
      console.log(form.value.id.toString());
      this.EmployeeID= form.value.id.toString();
-   this.id=  form.value.salary;
+   this.id=  form.value.salary_id.toString();
 
     console.log('id = '+this.id);
 
-    this.http.get<IEmployee[]>('http://10.10.10.91:8000/api/pi/emp/salary_check?Employee_ID='+form.value.id+'&salaryid='+form.value.salary)
+    this.http.get<IEmployee[]>('http://10.10.11.147:8000/api/pi/emp/salary_check?Employee_ID='+form.value.id+'&salaryid='+form.value.salary_id)
     .subscribe(data => {this.employees = data;
       this.dataSource = new MatTableDataSource(this.employees);
     });
+    // alert(JSON.stringify(this.employees.values));
     this.salarycertservice.setdata(this.id,this.EmployeeID);
 
   }
