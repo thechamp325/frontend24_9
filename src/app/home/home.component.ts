@@ -12,6 +12,7 @@ import { UserService, AuthenticationService, MessageService } from '@app/_servic
 styleUrls: ['./home.component.css'] }
 )
 export class HomeComponent implements OnInit, OnDestroy {
+    public flag=true;
     currentUser: User;
     currentUserSubscription: Subscription;
     users: User[] = [];
@@ -61,6 +62,11 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.userService.getAll().pipe(first()).subscribe(users => {
             this.users = users;
         });
+    }
+
+    hide() {
+        if(this.flag==true) this.flag=false;
+        else this.flag=true;
     }
 
     logout() {

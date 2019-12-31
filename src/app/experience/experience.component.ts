@@ -39,8 +39,7 @@ export class ExperienceComponent implements OnInit {
     console.log(JSON.stringify(this.experiencedata));
     this.experiencedata=this.salarycertservice.experience;
     console.log(JSON.stringify(this.experiencedata));
-
-    this._url='http://10.10.15.99:8000/api/pi/emp/salary_check?Employee_ID='+this.experiencedata[0].empid+'&experienceid='+this.experiencedata[0].experienceid;
+    this._url='http://10.10.11.82:8000/api/pi/emp/salary_check?Employee_ID='+this.experiencedata[0].empid+'&experienceid='+this.experiencedata[0].experienceid;
     console.log('In experiencecomponent experience_id = '+this.experiencedata[0].experienceid);
     this.http.get<IEmployee[]>(this._url)
     .subscribe(data => this.employees = data);

@@ -44,10 +44,10 @@ export class LiverequestComponent {
     private authenticationService: AuthenticationService,
     private userService: UserService
 
-  ) { }
+  ) {  }
   
   
-  private _url: string = 'http://10.10.15.99:8000/api/pi/emp/livehod';
+  private _url: string = 'http://10.10.11.99:8000/api/pi/emp/livehod';
   
   ngOnInit() {
 
@@ -65,7 +65,7 @@ export class LiverequestComponent {
     this.salarydata=[];
     this.salarydata.push({"EMPID":EMPID,"Certificate_id":Certificate_id,"flag":true});
     console.log('Certificate_id= '+Certificate_id+" EMPID = "+EMPID);
-     this.http.post('http://10.10.15.99:8000/api/pi/emp/salary/approvehod_salary',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
+     this.http.post('http://10.10.11.82:8000/api/pi/emp/salary/approvehod_salary',this.salarydata).subscribe(result => {alert(JSON.stringify(result))});
     
       this.ngOnInit();
     }

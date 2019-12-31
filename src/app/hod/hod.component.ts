@@ -72,7 +72,7 @@ export class HodComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-    this.http.post('http://10.10.14.236:8080/api/pi/emp', this.loginForm.value, ).subscribe(result => {alert(result)})
+    this.http.post('http://10.10.11.82:8080/api/pi/emp', this.loginForm.value, ).subscribe(result => {alert(result)})
 
     }
 }
