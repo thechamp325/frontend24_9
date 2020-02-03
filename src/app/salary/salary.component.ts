@@ -40,14 +40,17 @@ export class SalaryComponent implements OnInit{
   private _url: string = '';
 
   ngOnInit() {
-    console.log(JSON.stringify(this.salarydata));
     this.salarydata=this.salarycertservice.salary;
     console.log(JSON.stringify(this.salarydata));
 
-    this._url='http://10.10.15.99:8000/api/pi/emp/salary_check?Employee_ID='+this.salarydata[0].empid+'&salaryid='+this.salarydata[0].salaryid;
+    this._url='http://10.10.11.0:8000/api/pi/emp/staff/salary?Employee_ID='+this.salarydata[0].empid+'&salaryid='+this.salarydata[0].salaryid;
     console.log('In salarycomponent salary_id = '+this.salarydata[0].salaryid);
+
     this.http.get<IEmployee[]>(this._url)
-    .subscribe(data => this.employees = data);
+    .subscribe(data => {
+      this.employees = data;
+      console.log(data);
+    });
   }
 
   errorHandler(error: HttpErrorResponse){

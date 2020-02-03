@@ -26,7 +26,7 @@ export class StatusComponent implements OnInit {
   public employees = [];
   public errorMsg;
   constructor(
-    
+
     private http: HttpClient,
            private router: Router,
            private authenticationService: AuthenticationService,
@@ -36,7 +36,7 @@ export class StatusComponent implements OnInit {
   ) { } 
 
   
-  private _url: string ='http://10.10.10.91:8000/api/pi/emp/salary_check?Employee_ID=Emp01';
+  private _url: string ='http://10.10.11.0:8000/api/pi/emp/salary_check?Employee_ID=Emp01';
   private dataSource;
   ngOnInit() {
   
@@ -54,8 +54,7 @@ export class StatusComponent implements OnInit {
    this.id=  form.value.salary_id.toString();
 
     console.log('id = '+this.id);
-
-    this.http.get<IEmployee[]>('http://10.10.11.147:8000/api/pi/emp/salary_check?Employee_ID='+form.value.id+'&salaryid='+form.value.salary_id)
+    this.http.get<IEmployee[]>('http://10.10.11.0:8000/api/pi/emp/salary_check?Employee_ID='+form.value.id+'&salaryid='+form.value.salary_id)
     .subscribe(data => {this.employees = data;
       this.dataSource = new MatTableDataSource(this.employees);
     });

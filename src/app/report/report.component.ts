@@ -20,18 +20,19 @@ import { Subscription } from 'rxjs';
 export class ReportComponent implements OnInit {
 
   form: FormGroup;
+  form1:FormGroup;
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
 
 
-  constructor(private formBuilder: FormBuilder, 
+  constructor(private formBuilder: FormBuilder,
     private http: HttpClient,
      private router: Router,
       private authenticationService: AuthenticationService,
       private userService: UserService,
      
-     ) { 
+     ) {
       this.currentUserSubscription = this.authenticationService.currentUser.subscribe(user => {
         this.currentUser = user;
     });
@@ -57,14 +58,32 @@ export class ReportComponent implements OnInit {
       from_month:     ['', Validators.required],
       to_month:     ['', Validators.required],
     });
+
+    this.form1 = this.formBuilder.group({
+      empid:     [this.currentUser.username, Validators.required],
+      from_month:     ['', Validators.required],
+      to_month:     ['', Validators.required],
+    });
   }
 
   Submit(){
     console.log(this.form.value);
-    this.http.post('http://10.10.15.99:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
-   
+    this.http.post('http://10.10.11.0:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
   }
 
+  SubmitExp() {
+    console.log(this.form1.value);
+    this.http.post('http://10.10.11.0:8000/api/pi/emp/exp_certificate', this.form1.value ).subscribe(result => {alert(result)})
+  }
+  // SubmitNoOb() {
+  //   this.http.post('http://10.10.11.0:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
+  // }
+  // SubmitRel() {
+  //   this.http.post('http://10.10.11.0:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
+  // }
+  // SubmitLor() {
+  //   this.http.post('http://10.10.11.0:8000/api/pi/emp/salary_certificate', this.form.value ).subscribe(result => {alert(result)})
+  // }
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);

@@ -31,7 +31,7 @@
 <tr>
  <td>
   <mat-form-field>
-    <input matInput placeholder="First name" placeholder="EMPID" formControlName="empid">
+    <input matInput  placeholder="EMPID" formControlName="empid">
   </mat-form-field>
  </td>
         <td><mat-form-field class="example-full-width">
@@ -75,7 +75,7 @@
       
           <mat-action-row>
               <button mat-button color="primary" (click)="nextStep()">Next</button>
-              <button mat-button color="warn" routerLink="/experience">Request</button>
+              <button mat-button color="warn" routerLink="/experience" (click)="SubmitExp()">Request</button>
           </mat-action-row>
         </mat-expansion-panel>
 
@@ -103,7 +103,7 @@
   
       <mat-action-row>
         <button mat-button color="primary" (click)="prevStep()">Previous</button>
-        <button mat-button color="warn"  routerLink="/expadrel">Request</button>
+        <button mat-button color="warn"  routerLink="/expadrel"  (click)="SubmitRel()">Request</button>
       </mat-action-row>
     </mat-expansion-panel>
 
@@ -130,7 +130,7 @@
     
         <mat-action-row>
           <button mat-button color="primary" (click)="prevStep()">Previous</button>
-          <button mat-button color="warn" routerLink="/noobjection">Request</button>
+          <button mat-button color="warn" routerLink="/noobjection" (click)="SubmitNoOb()">Request</button>
         </mat-action-row>
       </mat-expansion-panel>
 
@@ -157,7 +157,7 @@
       
           <mat-action-row>
             <button mat-button color="primary" (click)="prevStep()">Previous</button>
-            <button mat-button color="warn" routerLink="/confirmationletter">Request</button>
+            <button mat-button color="warn" routerLink="/confirmationletter" (click)="SubmitLor()">Request</button>
           </mat-action-row>
         </mat-expansion-panel>
   
